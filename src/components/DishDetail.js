@@ -29,15 +29,19 @@ class DishDetail extends Component {
 
     renderComments(comments) {
         if (comments != null) {
-            const x = comments.comments.map((item) => {
+            const Comment = comments.comments.map((comment) => {
                 return (
                     <ul className="list-unstyled">
-                        <li key={comments.id}>
-                            {item.comment}
+                        <li key={Comment.id}>
+                            {comment.comment}
                             <br /><br />
                             {/*TODO author formatting*/}
-                            {item.author}
-                            {item.date}
+                            {comment.author}
+                            {new Intl.DateTimeFormat('en-US', {
+                                year: 'numeric',
+                                month: 'short',
+                                day: '2-digit'
+                            }).format(new Date(Date.parse(comment.date)))}
                         </li>
                     </ul>
                 );
@@ -46,7 +50,7 @@ class DishDetail extends Component {
             return (
                 <div className="col-12 col-md-5 m-1">
                     <h4>Comments</h4>
-                    {x}
+                    {Comment}
                 </div>
             );
         } else {
