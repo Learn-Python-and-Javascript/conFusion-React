@@ -8,6 +8,7 @@ import Footer from "./Footer";
 import Home from "./Home";
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Contact from "./Contact";
+import About from "./About";
 import { COMMENTS } from "../shared/comments";
 import { PROMOTIONS } from "../shared/promotions";
 import { LEADERS } from "../shared/leaders";
@@ -52,22 +53,28 @@ class Main extends Component {
 
         return (
             <div>
-                <Navbar dark color="primary">
-                    <div className="container">
-                        <NavbarBrand href="/">
-                            Ristorante Con Fusion
-                        </NavbarBrand>
-                    </div>
-                </Navbar>
+                {/* TODO something maybe not needed */}
+                {/*<Navbar dark color="primary">*/}
+                {/*    <div className="container">*/}
+                {/*        <NavbarBrand href="/">*/}
+                {/*            Ristorante Con Fusion*/}
+                {/*        </NavbarBrand>*/}
+                {/*    </div>*/}
+                {/*</Navbar>*/}
                 <Header />
-                <Menu dishes={this.state.dishes} onClick={(dishId) => this.onDishSelect(dishId)} />
-                <Footer />
                 <Switch>
                     <Route path='/home' component={HomePage} />
                     <Route path='/menu/:dishId' component={DishWithId} />
-                    <Route exact path='/contactus' component={Contact} />} />
+                    <Route path='/menu'>
+                        <Menu dishes={this.state.dishes} onClick={(dishId) => this.onDishSelect(dishId)} />
+                    </Route>
+                    <Route exact path='/contactus' component={Contact} />
+                    <Route path='/aboutus'>
+                        <About leaders={this.state.leaders} />
+                    </Route>
                     <Redirect to="/home" />
                 </Switch>
+                <Footer />
             </div>
         );
     }
