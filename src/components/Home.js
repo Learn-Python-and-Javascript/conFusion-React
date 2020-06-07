@@ -8,15 +8,15 @@ import {
     CardSubtitle
 } from 'reactstrap';
 
-function RenderCard({ item }) {
+function RenderCard({item}) {
     return (
         <Card>
             <CardImg src={item.image} alt={item.name} />
             <CardBody>
                 <CardTitle>
-                    { item.name }
+                    {item.name}
                 </CardTitle>
-                {item.designation ? <CardSubtitle>{item.designation}</CardSubtitle> : null}
+                {item.designation ? <CardSubtitle>{item.designation}</CardSubtitle> : null }
                 <CardText>{item.description}</CardText>
             </CardBody>
         </Card>
@@ -24,7 +24,7 @@ function RenderCard({ item }) {
 }
 
 function Home(props) {
-    return(
+    return (
         <div className="container">
             <div className="row align-items-start">
                 <div className="col-12 col-md m-1">

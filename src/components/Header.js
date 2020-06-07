@@ -1,21 +1,21 @@
 import React, { Component } from "react";
 import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 
 class Header extends Component {
     constructor(props) {
         super(props);
 
-        this.toggleNav = this.toggleNav.bind(this);
         this.state = {
             isNavOpen: false
         };
+        this.toggleNav = this.toggleNav.bind(this);
     }
 
     toggleNav() {
-        this.setState({
-            isNavOpen: !this.state.isNavOpen
-        });
+        this.setState(
+            {isNavOpen: !this.state.isNavOpen}
+        );
     }
 
     render() {
@@ -25,13 +25,13 @@ class Header extends Component {
                     <div className="container">
                         <NavbarToggler onClick={this.toggleNav} />
                         <NavbarBrand className="mr-auto" href="/">
-                            <img src='assets/images/logo.png' height="30" width="41" alt="Ristorante Con Fusion" />
+                            <img src='assets/images/logo.png' height="30" width="41" alt='Ristorante Con Fusion' />
                         </NavbarBrand>
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                             <Nav navbar>
                                 <NavItem>
                                     <NavLink className="nav-link" to='/home'>
-                                        <span className='fa fa-home fa-lg'></span>
+                                        <span className="fa fa-home fa-lg"></span>
                                         Home
                                     </NavLink>
                                 </NavItem>
@@ -49,7 +49,7 @@ class Header extends Component {
                                 </NavItem>
                                 <NavItem>
                                     <NavLink className="nav-link" to='/contactus'>
-                                        <span className='fa fa-address-card fa-lg'></span>
+                                        <span className="fa fa-address-card fa-lg"></span>
                                         Contact Us
                                     </NavLink>
                                 </NavItem>
