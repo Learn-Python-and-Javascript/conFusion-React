@@ -41,6 +41,15 @@ class Main extends Component {
             );
         }
 
+        const DishWithId = ({match}) => {
+            return (
+                <DishDetail
+                    dish={this.state.dishes.filter((dish) => dish.id === parseInt(match.params.dishId,10))[0]}
+                    comments={this.state.comments.filter((comment) => comment.id === parseInt(match.params.dishId,10))}
+                />
+            );
+        };
+
         return (
             <div>
                 <Navbar dark color="primary">
@@ -52,12 +61,10 @@ class Main extends Component {
                 </Navbar>
                 <Header />
                 <Menu dishes={this.state.dishes} onClick={(dishId) => this.onDishSelect(dishId)} />
-                <DishDetail dish={this.state.dishes.filter(
-                    (dish) => dish.id === this.state.selectedDish
-                )[0]} />
                 <Footer />
                 <Switch>
                     <Route path='/home' component={HomePage} />
+                    <Route path='/menu/:dishId' component={DishWithId} />
                     <Route exact path='/contactus' component={Contact} />} />
                     <Redirect to="/home" />
                 </Switch>
