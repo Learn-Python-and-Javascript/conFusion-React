@@ -73,10 +73,10 @@ const DishDetail = (props) => {
                             <hr />
                         </div>
                     </div>
-                </div>
-                <div className="row">
-                    <RenderDish dish={props.dish} />
-                    <RenderComments comments={props.comments} />
+                    <div className="row">
+                        <RenderDish dish={props.dish} />
+                        <RenderComments comments={props.comments} />
+                    </div>
                 </div>
             </div>
         );
