@@ -26,9 +26,9 @@ function RenderDish({dish}) {
     }
 }
 
-function RenderComments(comments) {
+function RenderComments({comments}) {
     if (comments != null) {
-        const c = comments.comments.map((item) => {
+        const c = comments.map((item) => {
             return (
                 <ul className="list-unstyled">
                     <li key={comments.id}>
