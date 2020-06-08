@@ -26,12 +26,12 @@ function RenderDish({dish}) {
     }
 }
 
-function RenderComments(comments) {
+function RenderComments({comments}) {
     if (comments != null) {
-        const c = comments.comments.map((item) => {
+        const c = comments.map((item) => {
             return (
                 <ul className="list-unstyled">
-                    <li key={comments.id}>
+                    <li key={item}>
                         {item.comment}
                         <br /><br />
                         {/*TODO author formatting*/}
@@ -73,10 +73,10 @@ const DishDetail = (props) => {
                             <hr />
                         </div>
                     </div>
-                </div>
-                <div className="row">
-                    <RenderDish dish={props.dish} />
-                    <RenderComments comments={props.comments} />
+                    <div className="row">
+                        <RenderDish dish={props.dish} />
+                        <RenderComments comments={props.comments} />
+                    </div>
                 </div>
             </div>
         );
