@@ -30,7 +30,16 @@ class Contact extends Component {
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleBlur = this.handleBlur.bind(this);
+    }
+
+    handleInputChange(event) {
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+
+        this.setState(
+            {[name]: value}
+        );
     }
 
     handleSubmit(values) {
@@ -114,16 +123,16 @@ class Contact extends Component {
                                 <Label htmlFor="firstname" md={2}>First Name</Label>
                                 <Col md={10}>
                                     <Control.text
-                                        model=".firstname"
+                                        model='.firstname'
                                         id='firstname'
                                         name='firstname'
                                         placeholder='First Name'
-                                        className="form-control"
+                                        className='form-control'
                                         validators={
                                             {
-                                                required,
-                                                minLength: minLength(3),
-                                                maxLength: maxLength(15)
+                                               required,
+                                               minLength: minLength(3),
+                                               maxLength: maxLength(15)
                                             }
                                         }
                                     />
@@ -135,7 +144,7 @@ class Contact extends Component {
                                             {
                                                 required: 'Required',
                                                 minLength: 'Must be greater than 2 characters',
-                                                maxLength: 'Must be 15 characters or length'
+                                                maxLength: 'Must be 15 characters or less'
                                             }
                                         }
                                     />
@@ -235,7 +244,7 @@ class Contact extends Component {
                             </Row>
                             <Row className="form-group">
                                 <Col md={{size: 6, offset: 2}}>
-                                    <div className='form-check'>
+                                    <div className="form-check">
                                         <Label check>
                                             <Control.checkbox
                                                 model='.agree'
@@ -268,7 +277,7 @@ class Contact extends Component {
                                         id='message'
                                         name='message'
                                         rows='12'
-                                        className='form-control'
+                                        className="form-control"
                                     />
                                 </Col>
                             </Row>
