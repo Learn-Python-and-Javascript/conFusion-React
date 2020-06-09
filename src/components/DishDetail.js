@@ -31,7 +31,7 @@ function RenderDish({dish}) {
     }
 }
 
-function RenderComments({comments}) {
+function RenderComments({comments, addComment, dishId}) {
     if (comments != null) {
         const c = comments.map((item) => {
             return (
@@ -55,7 +55,7 @@ function RenderComments({comments}) {
             <div className="col-12 col-md-5 m-1">
                 <h4>Comments</h4>
                 {c}
-                <CommentForm />
+                <CommentForm dishId={dishId} addComment={addComment} />
             </div>
         );
     } else {
@@ -66,36 +66,47 @@ function RenderComments({comments}) {
 class CommentForm extends React.Component {
     constructor(props) {
         super(props);
+
         this.state = {
-            modal: false
+            isNavOpen: false,
+            isModalOpen: false
         };
 
-        this.isToggle = this.isToggle.bind(this);
+        this.toggleNav = this.toggleNav.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    isToggle() {
+    toggleNav() {
         this.setState(
             {
-                modal: !this.state.modal
+                isNavOpen: !this.state.isNavOpen
+            }
+        );
+    }
+
+    toggleModal() {
+        this.setState(
+            {
+                isModalOpen: !this.state.isModalOpen
             }
         );
     }
 
     handleSubmit(values) {
-        console.log('Current State is ' + JSON.stringify(values));
-        alert('Current State is ' + JSON.stringify(values));
+        this.toggleModal();
+        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
     }
 
     render() {
         return (
             <div>
-                <Button onClick={this.isToggle}>
+                <Button onClick={this.toggleModal}>
                     <i className="fa fa-pencil"></i>&nbsp;
                     Submit Comment
                 </Button>
-                <Modal isOpen={this.state.modal} toggle={this.isToggle}>
-                    <ModalHeader toggle={this.isToggle}>
+                <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+                    <ModalHeader toggle={this.toggleModal}>
                         Submit Comment
                     </ModalHeader>
                     <ModalBody>
@@ -180,7 +191,11 @@ const DishDetail = (props) => {
                     </div>
                     <div className="row">
                         <RenderDish dish={props.dish} />
-                        <RenderComments comments={props.comments} />
+                        <RenderComments
+                            comments={props.comments}
+                            addComment={props.addComment}
+                            dishId={props.dish.id}
+                        />
                     </div>
                 </div>
             </div>
