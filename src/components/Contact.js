@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Breadcrumb, BreadcrumbItem,  Button, Label, Row, Col } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem,  Button, Row, Col, Label } from 'reactstrap';
 import { Control, LocalForm, Errors } from "react-redux-form";
 import { Link } from "react-router-dom";
 
@@ -29,7 +29,6 @@ class Contact extends Component {
             }
         };
 
-        this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -49,8 +48,17 @@ class Contact extends Component {
         // event.preventDefault();
     }
 
-    render() {
+    handleBlur = (filed) => (evt) => {
+        this.setState(
+            {
+                touched: {
+                    ...this.state.touched, [filed]: true
+                }
+            }
+        );
+    }
 
+    render() {
         return (
             <div className="container">
                 <div className="row">
@@ -120,11 +128,13 @@ class Contact extends Component {
                                         name='firstname'
                                         placeholder='First Name'
                                         className='form-control'
-                                        validators={{
-                                            required,
-                                            minLength: minLength(3),
-                                            maxLength: maxLength(15)
-                                        }}
+                                        validators={
+                                            {
+                                               required,
+                                               minLength: minLength(3),
+                                               maxLength: maxLength(15)
+                                            }
+                                        }
                                     />
                                     <Errors
                                         className="text-danger"
@@ -140,7 +150,7 @@ class Contact extends Component {
                                     />
                                 </Col>
                             </Row>
-                            <Row className='form-group'>
+                            <Row className="form-group">
                                 <Label htmlFor='lastname' md={2}>Last Name</Label>
                                 <Col md={10}>
                                     <Control.text
@@ -149,11 +159,13 @@ class Contact extends Component {
                                         name='lastname'
                                         placeholder='Last Name'
                                         className='form-control'
-                                        validators={{
-                                            required,
-                                            minLength: minLength(3),
-                                            maxLength: maxLength(15)
-                                        }}
+                                        validators={
+                                            {
+                                                required,
+                                                minLength: minLength(3),
+                                                maxLength: maxLength(15)
+                                            }
+                                        }
                                     />
                                     <Errors
                                         className="text-danger"
@@ -176,14 +188,16 @@ class Contact extends Component {
                                         model='.telnum'
                                         id='telnum'
                                         name='telnum'
-                                        placeholder='Tel. Number'
+                                        placeholder='Tel. number'
                                         className='form-control'
-                                        validators={{
-                                            required,
-                                            minLength: minLength(3),
-                                            maxLength: maxLength(15),
-                                            isNumber
-                                        }}
+                                        validators={
+                                            {
+                                                required,
+                                                minLength: minLength(3),
+                                                maxLength: maxLength(15),
+                                                isNumber
+                                            }
+                                        }
                                     />
                                     <Errors
                                         className="text-danger"
@@ -211,8 +225,7 @@ class Contact extends Component {
                                         className='form-control'
                                         validators={
                                             {
-                                                required,
-                                                validEmail
+                                                required, validEmail
                                             }
                                         }
                                     />

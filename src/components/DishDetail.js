@@ -8,6 +8,7 @@ import { Loading } from "./Loading";
 const maxLength = (len) => (val) => !(val) || val.length <= len;
 const minLength = (len) => (val) => (val) && val.length >= len;
 
+
 function RenderDish({dish}) {
     if (dish != null) {
         return (
@@ -125,6 +126,7 @@ class CommentForm extends React.Component {
                                     <option>3</option>
                                     <option>4</option>
                                     <option>5</option>
+
                                 </Control.select>
                             </div>
                             <div className="form-group">

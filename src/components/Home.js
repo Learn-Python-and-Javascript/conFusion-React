@@ -42,7 +42,7 @@ function Home(props) {
                     <RenderCard
                         item={props.dish}
                         isLoading={props.dishesLoading}
-                        errMess={props.dishErrMess}
+                        errMess={props.dishesErrMess}
                     />
                 </div>
                 <div className="col-12 col-md m-1">

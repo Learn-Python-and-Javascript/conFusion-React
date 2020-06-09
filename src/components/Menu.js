@@ -40,7 +40,9 @@ const Menu = (props) => {
         return (
             <div className="container">
                 <div className="row">
-                    <h4>{props.dishes.errMess}</h4>
+                    <div className="col-12">
+                        <h4>{props.dishes.errMess}</h4>
+                    </div>
                 </div>
             </div>
         );
@@ -58,7 +60,7 @@ const Menu = (props) => {
                     </Breadcrumb>
                     <div className="col-12">
                         <h3>Menu</h3>
-                        <hr/>
+                        <hr />
                     </div>
                 </div>
                 <div className="row">
