@@ -1,12 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import {Card, CardBody, CardImg, CardText, CardTitle, Breadcrumb, BreadcrumbItem,
-    Button, Label, Modal, ModalHeader, ModalBody } from "reactstrap";
-import { Link } from "react-router-dom";
+    Button, Modal, ModalHeader, ModalBody, Label} from "reactstrap";
 import { Control, LocalForm, Errors } from "react-redux-form";
+import { Link } from "react-router-dom";
 import { Loading } from "./Loading";
 
 const maxLength = (len) => (val) => !(val) || val.length <= len;
-const minLength = (len) => (val) => (val) && val.length > len;
+const minLength = (len) => (val) => (val) && val.length >= len;
 
 function RenderDish({dish}) {
     if (dish != null) {
@@ -37,7 +37,7 @@ function RenderComments({comments, addComment, dishId}) {
         const c = comments.map((item) => {
             return (
                 <ul className="list-unstyled">
-                    <li key={comments.id}>
+                    <li key={item}>
                         {item.comment}
                         <br /><br />
                         {/*TODO author formatting*/}
@@ -64,37 +64,50 @@ function RenderComments({comments, addComment, dishId}) {
     }
 }
 
-class CommentForm extends Component {
+class CommentForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {modal: false};
 
-        this.isToggle = this.isToggle.bind(this);
+        this.state = {
+            isNavOpen: false,
+            isModalOpen: false
+        };
+
+        this.toggleNav = this.toggleNav.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    isToggle() {
+    toggleNav() {
         this.setState(
             {
-                modal: !this.state.modal
+                isNavOpen: !this.state.isNavOpen
+            }
+        );
+    }
+
+    toggleModal() {
+        this.setState(
+            {
+                isModalOpen: !this.state.isModalOpen
             }
         );
     }
 
     handleSubmit(values) {
-        this.isToggle();
+        this.toggleModal();
         this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
     }
 
     render() {
         return (
-            <Button onClick={this.isToggle}>
-                <i className="fa fa-pencil"></i>&nbsp;
-                Submit Comment
-                <Modal
-                    isOpen={this.state.modal}
-                    toggle={this.isToggle}
-                >
-                    <ModalHeader toggle={this.isToggle}>
+            <div>
+                <Button onClick={this.toggleModal}>
+                    <i className="fa fa-pencil"></i>&nbsp;
+                    Submit Comment
+                </Button>
+                <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+                    <ModalHeader toggle={this.toggleModal}>
                         Submit Comment
                     </ModalHeader>
                     <ModalBody>
@@ -103,38 +116,38 @@ class CommentForm extends Component {
                                 <Label htmlFor="rating">Rating</Label>
                                 <Control.select
                                     className="form-control"
-                                    model='.select'
-                                    name='select'
-                                    id='select'
+                                    model=".rating"
+                                    name="select"
+                                    id="select"
                                 >
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
                                 </Control.select>
                             </div>
                             <div className="form-group">
                                 <Label htmlFor="yourname">Your Name</Label>
                                 <Control.text
                                     className="form-control"
-                                    model='.text'
-                                    placeholder='Your Name'
+                                    model=".yourname"
+                                    placeholder="Your Name"
                                     validators={
                                         {
-                                            minLength: minLength(2),
+                                            minLength: minLength(3),
                                             maxLength: maxLength(15)
                                         }
                                     }
                                 />
                                 <Errors
-                                    className='text-danger'
-                                    model='.text'
-                                    show='touched'
+                                    className="text-danger"
+                                    model=".yourname"
+                                    show="touched"
                                     messages={
                                         {
-                                            minLength: 'Must be greater than 2 characters',
-                                            maxLength: 'Must be 15 characters or less'
+                                            minLength: "Must be greater than 2 characters",
+                                            maxLength: "Must be 15 characters or less"
                                         }
                                     }
                                 />
@@ -143,17 +156,20 @@ class CommentForm extends Component {
                                 <Label htmlFor="comment">Comment</Label>
                                 <Control.textarea
                                     className="form-control"
-                                    model='.comment'
+                                    model=".comment"
                                     rows="6"
                                 />
                             </div>
-                            <Button type="submit" color="primary">
+                            <Button
+                                type="submit"
+                                color="primary"
+                            >
                                 Submit
                             </Button>
                         </LocalForm>
                     </ModalBody>
                 </Modal>
-            </Button>
+            </div>
         );
     }
 }
