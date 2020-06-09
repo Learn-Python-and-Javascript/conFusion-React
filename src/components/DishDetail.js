@@ -33,21 +33,20 @@ function RenderDish({dish}) {
     }
 }
 
-function RenderComments({comments, addComment, dishId}) {
+function RenderComments({comments, postComment, dishId}) {
     if (comments != null) {
         const c = comments.map((item) => {
             return (
                 <ul className="list-unstyled">
-                    <li key={item}>
-                        {item.comment}
-                        <br /><br />
-                        {/*TODO author formatting*/}
-                        {item.author}
+                    <li key={item.id}>
+                        <p>{item.comment}</p>
+                        <p>-- {item.author},&nbsp;
                         {new Intl.DateTimeFormat('en-US', {
                             year: 'numeric',
                             month: 'short',
                             day: '2-digit'
                         }).format(new Date(Date.parse(item.date)))}
+                        </p>
                     </li>
                 </ul>
             );
@@ -57,7 +56,7 @@ function RenderComments({comments, addComment, dishId}) {
             <div className="col-12 col-md-5 m-1">
                 <h4>Comments</h4>
                 {c}
-                <CommentForm dishId={dishId} addComment={addComment} />
+                <CommentForm dishId={dishId} postComment={postComment} />
             </div>
         );
     } else {
@@ -97,7 +96,7 @@ class CommentForm extends React.Component {
 
     handleSubmit(values) {
         this.toggleModal();
-        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
+        this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
     }
 
     render() {
@@ -129,10 +128,10 @@ class CommentForm extends React.Component {
                                 </Control.select>
                             </div>
                             <div className="form-group">
-                                <Label htmlFor="yourname">Your Name</Label>
+                                <Label htmlFor="author">Your Name</Label>
                                 <Control.text
                                     className="form-control"
-                                    model=".yourname"
+                                    model=".author"
                                     placeholder="Your Name"
                                     validators={
                                         {
@@ -143,7 +142,7 @@ class CommentForm extends React.Component {
                                 />
                                 <Errors
                                     className="text-danger"
-                                    model=".yourname"
+                                    model=".author"
                                     show="touched"
                                     messages={
                                         {
@@ -212,7 +211,7 @@ const DishDetail = (props) => {
                         <RenderDish dish={props.dish}/>
                         <RenderComments
                             comments={props.comments}
-                            addComment={props.addComment}
+                            postComment={props.postComment}
                             dishId={props.dish.id}
                         />
                     </div>
