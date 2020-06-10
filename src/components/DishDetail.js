@@ -43,23 +43,6 @@ function RenderDish({dish}) {
 
 function RenderComments({comments, postComment, dishId}) {
     if (comments != null) {
-        const c = comments.map((item) => {
-            return (
-                <ul className="list-unstyled">
-                    <li key={item.id}>
-                        <p>{item.comment}</p>
-                        <p>-- {item.author},&nbsp;
-                        {new Intl.DateTimeFormat('en-US', {
-                            year: 'numeric',
-                            month: 'short',
-                            day: '2-digit'
-                        }).format(new Date(Date.parse(item.date)))}
-                        </p>
-                    </li>
-                </ul>
-            );
-        });
-
         return (
             <div className="col-12 col-md-5 m-1">
                 <h4>Comments</h4>
