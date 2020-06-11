@@ -2,6 +2,7 @@
   "name": "demo",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@popperjs/core": "^2.4.1",
     "@testing-library/dom": "^7.11.0",
