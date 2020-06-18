@@ -7,7 +7,7 @@ import { baseUrl } from "../shared/baseUrl";
 function RenderMenuItem({dish, onClick}) {
     return (
         <Card>
-            <Link to={`/menu/${dish.id}`}>
+            <Link to={`/menu/${dish._id}`}>
                 <CardImg width="100%" src={baseUrl + dish.image} alt={dish.name} />
                 <CardImgOverlay>
                     <CardTitle>
@@ -23,8 +23,8 @@ const Menu = (props) => {
 
     const menu = props.dishes.dishes.map((dish) => {
         return (
-            <div key={dish.id} className="col-12 col-md-5 m-1" >
-                <RenderMenuItem dish={dish} onClick={props.onClick} />
+            <div key={dish._id} className="col-12 col-md-5 m-1" >
+                <RenderMenuItem dish={dish} />
             </div>
         );
     });
