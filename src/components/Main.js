@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component, useRef} from "react";
 import Menu from "./Menu";
 import DishDetail from "./DishDetail";
 import Header from "./Header";
@@ -74,11 +74,12 @@ class Main extends Component {
             );
         };
 
-        return (
-            <div>
-                <Header />
+        const MainRoutes = () => {
+            const nodeRef = useRef(null);
+            return (
                 <TransitionGroup>
                     <CSSTransition
+                        nodeRef={nodeRef}
                         key={this.props.location.key}
                         classNames="page"
                         timeout={300}
@@ -100,6 +101,13 @@ class Main extends Component {
                         </Switch>
                     </CSSTransition>
                 </TransitionGroup>
+            );
+        }
+
+        return (
+            <div>
+                <Header />
+                <MainRoutes />
                 <Footer />
             </div>
         );
