@@ -225,3 +225,134 @@ export const postFeedback = (firstname, lastname, telnum, email, agree, contactT
             alert('Your feedback could not be posted\nError: ' + error.message)
         })
 };
+
+export const requestSignup = (cred) => {
+    return {
+        type: ActionTypes.SIGNUP_REQUEST,
+        cred
+    }
+};
+
+export const receiveSignup = (response) => {
+    return {
+        type: ActionTypes.SIGNUP_SUCCESS,
+        token: response.token
+    }
+};
+
+export const signupError = (message) => {
+    return {
+        type: ActionTypes.SIGNUP_FAILURE,
+        message
+    }
+};
+
+export const signupUser = (cred) => (dispatch) => {
+    dispatch(requestSignup(cred));
+
+    return fetch(baseUrl + 'users/signup', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(cred)
+    })
+        .then(response => {
+            if (response.ok) {
+                return response;
+            } else {
+                const error = new Error('Error ' + response.status + ': ' + response.statusText);
+                error.response = response;
+                throw error;
+            }
+        }, error => {
+            throw error;
+        })
+        .then(response => response.json())
+        .then(response => {
+            if (response.success) {
+                dispatch(receiveSignup(response));
+            } else {
+                const error = new Error('Error ' + response.status);
+                error.response = response;
+                throw error;
+            }
+        })
+        .catch(error => dispatch(signupError(error.message)));
+};
+
+export const requestLogin = (cred) => {
+    return {
+        type: ActionTypes.LOGIN_REQUEST,
+        cred
+    }
+};
+
+export const receiveLogin = (response) => {
+    return {
+        type: ActionTypes.LOGIN_SUCCESS,
+        token: response.token
+    }
+};
+
+export const loginError = (message) => {
+    return {
+        type: ActionTypes.LOGIN_FAILURE,
+        message
+    }
+};
+
+export const loginUser = (cred) => (dispatch) => {
+    dispatch(requestLogin(cred));
+
+    return fetch(baseUrl + 'users/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(cred)
+    })
+        .then(response => {
+            if (response.ok) {
+                return response;
+            } else {
+                const error = new Error('Error ' + response.status + ': ' + response.statusText);
+                error.response = response;
+                throw error;
+            }
+        }, error => {
+            throw error;
+        })
+        .then(response => response.json())
+        .then(response => {
+            if (response.success) {
+                localStorage.setItem('token', response.token);
+                localStorage.setItem('cred', JSON.stringify(cred));
+                dispatch(receiveLogin(response));
+            } else {
+                const error = new Error('Error ' + response.status);
+                error.response = response;
+                throw error;
+            }
+        })
+        .catch(error => dispatch(loginError(error.message)))
+};
+
+export const requestLogout = () => {
+    return {
+        type: ActionTypes.LOGOUT_REQUEST
+    }
+};
+
+export const receiveLogout = () => {
+    return {
+        type: ActionTypes.LOGOUT_SUCCESS
+    }
+};
+
+export const logoutUser = () => (dispatch) => {
+    dispatch(requestLogout());
+    localStorage.removeItem('token');
+    localStorage.removeItem('cred');
+    dispatch(receiveLogout());
+};

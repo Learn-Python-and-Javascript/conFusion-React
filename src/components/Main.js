@@ -8,7 +8,15 @@ import Contact from "./Contact";
 import About from "./About";
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { postComment, fetchDishes, fetchComments, fetchPromos, fetchLeaders, postFeedback } from "../redux/ActionCreators";
+import {
+    postComment,
+    fetchDishes,
+    fetchComments,
+    fetchPromos,
+    fetchLeaders,
+    postFeedback,
+    loginUser, logoutUser, signupUser
+} from "../redux/ActionCreators";
 import { actions } from "react-redux-form";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
@@ -17,19 +25,22 @@ const mapStateToProps = state => {
         dishes: state.dishes,
         comments: state.comments,
         promotions: state.promotions,
-        leaders: state.leaders
+        leaders: state.leaders,
+        auth: state.auth
     }
 }
 
 const mapDispatchToProps = dispatch => (
     {
-        postComment: (dishId, rating, author, comment) => dispatch(
-            postComment(dishId, rating, author, comment)),
+        postComment: (dishId, rating, author, comment) => dispatch(postComment(dishId, rating, author, comment)),
         fetchDishes: () => { dispatch(fetchDishes()) },
         resetFeedbackForm: () => { dispatch(actions.reset('feedback')) },
         fetchComments: () => dispatch(fetchComments()),
         fetchPromos: () => dispatch(fetchPromos()),
         fetchLeaders: () => dispatch(fetchLeaders()),
+        signupUser: (cred) => dispatch(signupUser(cred)),
+        loginUser: (cred) => dispatch(loginUser(cred)),
+        logoutUser: () => dispatch(logoutUser()),
         postFeedback: (firstname, lastname, telnum, email, agree, contactType, message) => dispatch(
             postFeedback(firstname, lastname, telnum, email, agree, contactType, message)
         )
@@ -107,7 +118,12 @@ class Main extends Component {
 
         return (
             <div>
-                <Header />
+                <Header
+                    auth={this.props.auth}
+                    signupUser={this.props.signupUser}
+                    loginUser={this.props.loginUser}
+                    logoutUser={this.props.logoutUser}
+                />
                 <MainRoutes />
                 <Footer />
             </div>
