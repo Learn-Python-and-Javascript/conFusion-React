@@ -50,7 +50,7 @@ class Header extends Component {
                             <img src='assets/images/logo.png' height="30" width="41" alt='Ristorante Con Fusion' />
                         </NavbarBrand>
                         <Collapse isOpen={this.state.isNavOpen} navbar>
-                            <Nav className="ml-auto" navbar>
+                            <Nav navbar>
                                 <NavItem>
                                     <NavLink className="nav-link" to='/home'>
                                         <span className="fa fa-home fa-lg"></span>
@@ -75,12 +75,14 @@ class Header extends Component {
                                         Contact Us
                                     </NavLink>
                                 </NavItem>
+                            </Nav>
+                            <Nav className="ml-auto" navbar>
                                 <NavItem>
-                                <Button outline onClick={this.toggleModal}>
-                                    <span className="fa fa-sign-in fa-lg"></span>
-                                    Login
+	                                <Button outline onClick={this.toggleModal}>
+		                                <span className="fa fa-sign-in fa-lg"></span>
+		                                Login
                                 </Button>
-                            </NavItem>
+                                </NavItem>
                             </Nav>
                         </Collapse>
                         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
