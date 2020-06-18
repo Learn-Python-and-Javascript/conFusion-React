@@ -14,23 +14,18 @@ function RenderDish({dish}) {
     if (dish != null) {
         return (
             <div className="col-12 col-md-5 m-1">
-                <FadeTransform
-                    in
-                    transformProps={{
-                        exitTransform: 'scale(0.5) translate&(-50%)'
-                    }}
-                >
+                <FadeTransform in transformProps={{ exitTransform: 'scale(0.5) translate&(-50%)' }}>
                     <Card>
-                    <CardImg top src={baseUrl + dish.image} alt={dish.name} />
-                    <CardBody>
-                        <CardTitle>
-                            {dish.name}
-                        </CardTitle>
-                        <CardText>
-                            {dish.description}
-                        </CardText>
-                    </CardBody>
-                </Card>
+                        <CardImg top src={baseUrl + dish.image} alt={dish.name} />
+                        <CardBody>
+                            <CardTitle>
+                                {dish.name}
+                            </CardTitle>
+                            <CardText>
+                                {dish.description}
+                            </CardText>
+                        </CardBody>
+                    </Card>
                 </FadeTransform>
             </div>
         );

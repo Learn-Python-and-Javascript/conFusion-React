@@ -62,7 +62,7 @@ class Main extends Component {
         }
 
         const DishWithId = ({match}) => {
-            console.log(match.params.dishId);
+
             return (
                 <DishDetail
                     dish={this.props.dishes.dishes.filter((dish) => dish._id === match.params.dishId)[0]}
