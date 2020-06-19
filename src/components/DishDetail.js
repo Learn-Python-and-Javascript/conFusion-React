@@ -7,9 +7,6 @@ import { Loading } from "./Loading";
 import { baseUrl } from "../shared/baseUrl";
 import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
-const maxLength = (len) => (val) => !(val) || val.length <= len;
-const minLength = (len) => (val) => (val) && val.length >= len;
-
 function RenderDish({dish}) {
     if (dish != null) {
         return (
@@ -46,18 +43,19 @@ function RenderComments({comments, postComment, dishId}) {
                         return (
                             <ul className="list-unstyled">
                                 <Fade in>
-                                    <li key={comment.id}>
+                                    <li key={comment._id}>
                                         <p>{comment.comment}</p>
-                                        <p>-- {comment.author}, {
-                                            new Intl.DateTimeFormat(
+                                        <p>
+                                            -- {comment.author.username},
+                                            { new Intl.DateTimeFormat(
                                                 'en-US',
                                                 {
                                                     year: 'numeric',
                                                     month: 'short',
                                                     day: '2-digit'
-                                                }
-                                            ).format(new Date(Date.parse(comment.date)))
-                                        }</p>
+                                                }).format(new Date(Date.parse(comment.updatedAt)))
+                                            }
+                                        </p>
                                     </li>
                                 </Fade>
                             </ul>
@@ -104,7 +102,7 @@ class CommentForm extends React.Component {
 
     handleSubmit(values) {
         this.toggleModal();
-        this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
+        this.props.postComment(this.props.dishId, values.rating, values.comment);
     }
 
     render() {
@@ -134,31 +132,6 @@ class CommentForm extends React.Component {
                                     <option>4</option>
                                     <option>5</option>
                                 </Control.select>
-                            </div>
-                            <div className="form-group">
-                                <Label htmlFor="author">Your Name</Label>
-                                <Control.text
-                                    className="form-control"
-                                    model=".author"
-                                    placeholder="Your Name"
-                                    validators={
-                                        {
-                                            minLength: minLength(3),
-                                            maxLength: maxLength(15)
-                                        }
-                                    }
-                                />
-                                <Errors
-                                    className="text-danger"
-                                    model=".author"
-                                    show="touched"
-                                    messages={
-                                        {
-                                            minLength: "Must be greater than 2 characters",
-                                            maxLength: "Must be 15 characters or less"
-                                        }
-                                    }
-                                />
                             </div>
                             <div className="form-group">
                                 <Label htmlFor="comment">Comment</Label>
@@ -220,7 +193,7 @@ const DishDetail = (props) => {
                         <RenderComments
                             comments={props.comments}
                             postComment={props.postComment}
-                            dishId={props.dish.id}
+                            dishId={props.dish._id}
                         />
                     </div>
                 </div>

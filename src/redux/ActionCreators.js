@@ -6,20 +6,22 @@ export const addComment = (comment) => ({
     payload: comment
 });
 
-export const postComment = (dishId, rating, author, comment) => (dispatch) => {
+export const postComment = (dishId, rating, comment) => (dispatch) => {
     const newComment = {
         dishId: dishId,
         rating: rating,
-        author: author,
         comment: comment
     };
     newComment.date = new Date().toISOString();
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
 
     return fetch(baseUrl + 'comments', {
         method: "POST",
         body: JSON.stringify(newComment),
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            'Authorization': bearer
         },
         credentials: "same-origin"
     })
