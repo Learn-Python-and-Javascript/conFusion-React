@@ -10,26 +10,33 @@
     min-height:400px;
 }
 
+.BLM {
+    text-align: center;
+    background-color: #000000;
+    color: #eaeaeb;
+}
+
 .footer{
-    background-color: #D1C4E9;
-    margin:0px auto;
+    background-color: #000000;
+    margin: 100px auto 0 auto;
     padding: 20px 0px 20px 0px;
+    color: #eaeaeb;
 }
 .jumbotron {
     padding:70px 30px 70px 30px;
-    margin:0px auto;
-    background: #9575CD ;
+    margin:10px auto 5px auto;
+    background: #282c34;
     color:floralwhite;
 }
 
 address{
     font-size:80%;
     margin:0px;
-    color:#0f0f0f;
+    color:#b5b6b9;
 }
 
 .navbar-dark {
-    background-color: #512DA8;
+    background-color: #000000;
 }
 
 .page-enter {

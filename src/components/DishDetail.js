@@ -1,7 +1,7 @@
 import React from "react";
 import {Card, CardBody, CardImg, CardText, CardTitle, Breadcrumb, BreadcrumbItem,
     Button, Modal, ModalHeader, ModalBody, Label} from "reactstrap";
-import { Control, LocalForm, Errors } from "react-redux-form";
+import { Control, LocalForm } from "react-redux-form";
 import { Link } from "react-router-dom";
 import { Loading } from "./Loading";
 import { baseUrl } from "../shared/baseUrl";
