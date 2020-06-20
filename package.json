@@ -5,15 +5,11 @@
   "homepage": ".",
   "dependencies": {
     "@popperjs/core": "^2.4.1",
-    "@testing-library/dom": "^7.11.0",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
     "bootstrap": "^4.5.0",
     "bootstrap-social": "^5.1.1",
+    "core-js": "^3.6.5",
     "cross-fetch": "^3.0.4",
     "font-awesome": "^4.7.0",
-    "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
@@ -31,6 +27,9 @@
     "redux-thunk": "^2.3.0",
     "typescript": "^3.9.5"
   },
+  "resolutions": {
+    "chokidar": "^3.4.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -39,7 +38,9 @@
     "commit": "npx git-cz"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app"
+    ]
   },
   "browserslist": {
     "production": [

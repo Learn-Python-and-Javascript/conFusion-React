@@ -75,9 +75,9 @@ class Contact extends Component {
                             121, Clear Water Bay Road<br/>
                             Clear Water Bay, Kowloon<br/>
                             HONG KONG<br/>
-                            <i className="fa fa-phone"></i>: +852 1234 5678<br/>
-                            <i className="fa fa-fax"></i>: +852 8765 4321<br/>
-                            <i className="fa fa-envelope"></i>:
+                            <i className="fa fa-phone"></i>&nbsp;&nbsp;+852 1234 5678<br/>
+                            <i className="fa fa-fax"></i>&nbsp;+852 8765 4321<br/>
+                            <i className="fa fa-envelope"></i>&nbsp;
                             <a href="mailto:confusion@food.net">
                                 confusion@food.net
                             </a>
