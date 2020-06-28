@@ -1,1 +1,1 @@
-export const baseUrl = 'http://139.196.180.153:3000/';
+export const baseUrl = 'https://confusion-server-from-ecs.herokuapp.com/'
