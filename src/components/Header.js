@@ -74,7 +74,7 @@ class Header extends Component {
 		return (
 			<div>
 				<div className="BLM">
-					Black Lives Matter.&nbsp
+					Black Lives Matter.&nbsp;
 					<a target="_blank" rel="noopener noreferrer" href="https://support.eji.org/give/153413/#!/donation/checkout">
 						Support the Equal Justice Initiative.
 					</a>
@@ -90,25 +90,25 @@ class Header extends Component {
 								<NavItem>
 									<NavLink className="nav-link" to="/home">
 										<span className="fa fa-home fa-lg" />
-										&nbspHome
+										&nbsp;Home
 									</NavLink>
 								</NavItem>
 								<NavItem>
 									<NavLink className="nav-link" to="/aboutus">
 										<span className="fa fa-info fa-lg" />
-										&nbspAbout Us
+										&nbsp;About Us
 									</NavLink>
 								</NavItem>
 								<NavItem>
 									<NavLink className="nav-link" to="/menu">
 										<span className="fa fa-list fa-lg" />
-										&nbspMenu
+										&nbsp;Menu
 									</NavLink>
 								</NavItem>
 								<NavItem>
 									<NavLink className="nav-link" to="/contactus">
 										<span className="fa fa-address-card fa-lg" />
-										&nbspContact Us
+										&nbsp;Contact Us
 									</NavLink>
 								</NavItem>
 							</Nav>
@@ -119,15 +119,15 @@ class Header extends Component {
 											<div>
 												<Button outline onClick={this.toggleSignInModal}>
 													<span className="fa fa-sign-in fa-lg" />
-													&nbspLogin
+													&nbsp;Login
 													{this.props.auth.isFetching
 														?													<span className="fa fa-spinner fa-pulse fa-fw" />
 														:													null}
 												</Button>
-												&nbsp&nbsp&nbsp&nbsp
+												&nbsp;&nbsp;&nbsp;&nbsp;
 												<Button outline onClick={this.toggleSignUpModal}>
 													<span className="fa fa-user-plus fa-lg" />
-													&nbspSignUp
+													&nbsp;SignUp
 													{this.props.auth.isFetching
 														?													<span className="fa fa-spinner fa-pulse fa-fw" />
 														:													null}
@@ -141,7 +141,7 @@ class Header extends Component {
 												</div>
 												<Button outline onClick={this.handleLogout}>
 													<span className="fa fa-sign-out fa-lg" />
-													&nbspLogout
+													&nbsp;Logout
 													{
 														this.props.auth.isFetching
 															?														<span className="fa fa-spinner fa-pulse fa-fw" />

@@ -81,13 +81,13 @@ class Contact extends Component {
 							HONG KONG
 							<br />
 							<i className="fa fa-phone" />
-							&nbsp&nbsp+852 1234 5678
+							&nbsp;&nbsp;+852 1234 5678
 							<br />
 							<i className="fa fa-fax" />
-							&nbsp+852 8765 4321
+							&nbsp;+852 8765 4321
 							<br />
 							<i className="fa fa-envelope" />
-							&nbsp
+							&nbsp;
 							<a href="mailto:confusion@food.net">
 								confusion@food.net
 							</a>
