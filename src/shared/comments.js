@@ -1,4 +1,4 @@
-export const COMMENTS = [
+const COMMENTS = [
 	{
 		id: 0,
 		dishId: 0,
@@ -160,3 +160,5 @@ export const COMMENTS = [
 		date: '2011-12-02T17:57:28.556094Z',
 	},
 ]
+
+export default COMMENTS

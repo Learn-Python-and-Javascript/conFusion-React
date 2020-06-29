@@ -8,8 +8,8 @@ import {
 	CardSubtitle,
 } from 'reactstrap'
 import { FadeTransform } from 'react-animation-components'
-import { Loading } from './Loading'
-import { baseUrl } from '../shared/baseUrl'
+import Loading from './Loading'
+import baseUrl from '../shared/baseUrl'
 
 function RenderCard({ item, isLoading, errMess }) {
 	const nodeRef = useRef(null)

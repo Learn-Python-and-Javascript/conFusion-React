@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {
 	Card, CardBody, CardImg, CardText, CardTitle, Breadcrumb, BreadcrumbItem,
 	Button, Modal, ModalHeader, ModalBody, Label,
@@ -6,8 +6,8 @@ import {
 import {Control, LocalForm} from 'react-redux-form'
 import {Link} from 'react-router-dom'
 import {FadeTransform, Fade, Stagger} from 'react-animation-components'
-import {Loading} from './Loading'
-import {baseUrl} from '../shared/baseUrl'
+import Loading from './Loading'
+import baseUrl from '../shared/baseUrl'
 
 function RenderDish({dish}) {
 	if (dish != null) {
@@ -71,90 +71,63 @@ function RenderComments({comments, postComment, dishId}) {
 	return <div/>
 }
 
-class CommentForm extends React.Component {
-	constructor(props) {
-		super(props)
+const CommentForm = (props) => {
+	const [isModalOpen, setIsModalOpen] = useState(false)
 
-		this.state = {
-			isNavOpen: false,
-			isModalOpen: false,
-		}
+	const toggleModal = () => setIsModalOpen(!isModalOpen)
 
-		this.toggleNav = this.toggleNav.bind(this)
-		this.toggleModal = this.toggleModal.bind(this)
-		this.handleSubmit = this.handleSubmit.bind(this)
+	const handleSubmit = (values) => {
+		toggleModal()
+		props.postComment(props.dishId, values.rating, values.comment)
 	}
 
-	toggleNav() {
-		this.setState(
-			{
-				isNavOpen: !this.state.isNavOpen,
-			},
-		)
-	}
-
-	toggleModal() {
-		this.setState(
-			{
-				isModalOpen: !this.state.isModalOpen,
-			},
-		)
-	}
-
-	handleSubmit(values) {
-		this.toggleModal()
-		this.props.postComment(this.props.dishId, values.rating, values.comment)
-	}
-
-	render() {
-		return (
-			<div>
-				<Button onClick={this.toggleModal}>
-					<i className="fa fa-pencil"/>
-					&nbsp;
+	return (
+		<div>
+			<Button onClick={toggleModal}>
+				<i className="fa fa-pencil"/>
+				&nbsp;
+				Submit Comment
+			</Button>
+			<Modal isOpen={isModalOpen} toggle={toggleModal}>
+				<ModalHeader toggle={toggleModal}>
 					Submit Comment
-				</Button>
-				<Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-					<ModalHeader toggle={this.toggleModal}>
-						Submit Comment
-					</ModalHeader>
-					<ModalBody>
-						<LocalForm onSubmit={(values) => this.handleSubmit(values)}>
-							<div className="form-group">
-								<Label htmlFor="rating">Rating</Label>
-								<Control.select
-									className="form-control"
-									model=".rating"
-									name="select"
-									id="select"
-								>
-									<option>1</option>
-									<option>2</option>
-									<option>3</option>
-									<option>4</option>
-									<option>5</option>
-								</Control.select>
-							</div>
-							<div className="form-group">
-								<Label htmlFor="comment">Comment</Label>
-								<Control.textarea
-									className="form-control"
-									model=".comment"
-									rows="6"
-								/>
-							</div>
-							<Button
-								type="submit"
-								color="primary"
+				</ModalHeader>
+				<ModalBody>
+					<LocalForm onSubmit={(values) => handleSubmit(values)}>
+						<div className="form-group">
+							<Label htmlFor="rating">Rating</Label>
+							<Control.select
+								className="form-control"
+								model=".rating"
+								name="select"
+								id="select"
 							>
-								Submit
-							</Button>
-						</LocalForm>
-					</ModalBody>
-				</Modal>
-			</div>
-		)
-	}
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+							</Control.select>
+						</div>
+						<div className="form-group">
+							<Label htmlFor="comment">Comment</Label>
+							<Control.textarea
+								className="form-control"
+								model=".comment"
+								rows="6"
+							/>
+						</div>
+						<Button
+							type="submit"
+							color="primary"
+						>
+							Submit
+						</Button>
+					</LocalForm>
+				</ModalBody>
+			</Modal>
+		</div>
+	)
 }
 
 const DishDetail = (props) => {
