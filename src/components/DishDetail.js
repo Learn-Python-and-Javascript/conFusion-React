@@ -111,7 +111,7 @@ class CommentForm extends React.Component {
 			<div>
 				<Button onClick={this.toggleModal}>
 					<i className="fa fa-pencil"/>
-					&nbsp
+					&nbsp;
 					Submit Comment
 				</Button>
 				<Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
