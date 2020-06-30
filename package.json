@@ -35,7 +35,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "commit": "npx git-cz"
+    "commit": "npx git-cz",
+    "lint": "eslint ."
   },
   "eslintConfig": {
     "extends": [
@@ -55,7 +56,13 @@
     ]
   },
   "devDependencies": {
-    "cz-conventional-changelog": "3.2.0"
+    "babel-eslint": "^10.1.0",
+    "cz-conventional-changelog": "3.2.0",
+    "eslint-config-airbnb": "18.2.0",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-jsx-a11y": "^6.3.0",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "4.0.0"
   },
   "config": {
     "commitizen": {
