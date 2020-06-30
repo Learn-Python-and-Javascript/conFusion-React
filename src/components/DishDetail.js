@@ -1,21 +1,21 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import {
 	Card, CardBody, CardImg, CardText, CardTitle, Breadcrumb, BreadcrumbItem,
 	Button, Modal, ModalHeader, ModalBody, Label,
 } from 'reactstrap'
-import {Control, LocalForm} from 'react-redux-form'
-import {Link} from 'react-router-dom'
-import {FadeTransform, Fade, Stagger} from 'react-animation-components'
+import { Control, LocalForm } from 'react-redux-form'
+import { Link } from 'react-router-dom'
+import { FadeTransform, Fade, Stagger } from 'react-animation-components'
 import Loading from './Loading'
 import baseUrl from '../shared/baseUrl'
 
-function RenderDish({dish}) {
+function RenderDish({ dish }) {
 	if (dish != null) {
 		return (
 			<div className="col-12 col-md-5 m-1">
-				<FadeTransform in transformProps={{exitTransform: 'scale(0.5) translate&(-50%)'}}>
+				<FadeTransform in transformProps={{ exitTransform: 'scale(0.5) translate&(-50%)' }}>
 					<Card>
-						<CardImg top src={baseUrl + dish.image} alt={dish.name}/>
+						<CardImg top src={baseUrl + dish.image} alt={dish.name} />
 						<CardBody>
 							<CardTitle>
 								{dish.name}
@@ -30,11 +30,11 @@ function RenderDish({dish}) {
 		)
 	}
 	return (
-		<div/>
+		<div />
 	)
 }
 
-function RenderComments({comments, postComment, dishId}) {
+function RenderComments({ comments, postComment, dishId }) {
 	if (comments != null) {
 		return (
 			<div className="col-12 col-md-5 m-1">
@@ -64,11 +64,11 @@ function RenderComments({comments, postComment, dishId}) {
 						</ul>
 					))}
 				</Stagger>
-				<CommentForm dishId={dishId} postComment={postComment}/>
+				<CommentForm dishId={dishId} postComment={postComment} />
 			</div>
 		)
 	}
-	return <div/>
+	return <div />
 }
 
 const CommentForm = (props) => {
@@ -84,7 +84,7 @@ const CommentForm = (props) => {
 	return (
 		<div>
 			<Button onClick={toggleModal}>
-				<i className="fa fa-pencil"/>
+				<i className="fa fa-pencil" />
 				&nbsp;
 				Submit Comment
 			</Button>
@@ -135,7 +135,7 @@ const DishDetail = (props) => {
 		return (
 			<div className="container">
 				<div className="row">
-					<Loading/>
+					<Loading />
 				</div>
 			</div>
 		)
@@ -162,11 +162,11 @@ const DishDetail = (props) => {
 						</Breadcrumb>
 						<div className="col-12">
 							<h3>{props.dish.name}</h3>
-							<hr/>
+							<hr />
 						</div>
 					</div>
 					<div className="row">
-						<RenderDish dish={props.dish}/>
+						<RenderDish dish={props.dish} />
 						<RenderComments
 							comments={props.comments}
 							postComment={props.postComment}
@@ -178,7 +178,7 @@ const DishDetail = (props) => {
 		)
 	}
 	return (
-		<div/>
+		<div />
 	)
 }
 

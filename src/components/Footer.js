@@ -39,12 +39,24 @@ function Footer() {
 					</div>
 					<div className="col-12 col-sm-4 align-self-center">
 						<div className="text-center">
-							<a className="btn btn-social-icon btn-google" href="http://google.com/+"><i className="fa fa-google-plus" /></a>
-							<a className="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i className="fa fa-facebook" /></a>
-							<a className="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i className="fa fa-linkedin" /></a>
-							<a className="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i className="fa fa-twitter" /></a>
-							<a className="btn btn-social-icon btn-google" href="http://youtube.com/"><i className="fa fa-youtube" /></a>
-							<a className="btn btn-social-icon btn-info" href="mailto:"><i className="fa fa-envelope-o" /></a>
+							<a className="btn btn-social-icon btn-google" href="http://google.com/+">
+								<i className="fa fa-google-plus" aria-label="Google" />
+							</a>
+							<a className="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id=">
+								<i className="fa fa-facebook" aria-label="Facebook" />
+							</a>
+							<a className="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/">
+								<i className="fa fa-linkedin" aria-label="Linkedin" />
+							</a>
+							<a className="btn btn-social-icon btn-twitter" href="http://twitter.com/">
+								<i className="fa fa-twitter" aria-label="Twitter" />
+							</a>
+							<a className="btn btn-social-icon btn-google" href="http://youtube.com/">
+								<i className="fa fa-youtube" aria-label="Youtube" />
+							</a>
+							<a className="btn btn-social-icon btn-info" href="mailto:">
+								<i className="fa fa-envelope-o" aria-label="Info" />
+							</a>
 						</div>
 					</div>
 				</div>

@@ -1,7 +1,6 @@
 build
 .eslintrc.js
 
-src/redux
 src/components/Header.js
 
 src/serviceWorker.js

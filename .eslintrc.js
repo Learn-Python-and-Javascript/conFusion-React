@@ -9,6 +9,7 @@ module.exports = {
 		'airbnb',
 		'airbnb/hooks'
 	],
+	'parser': 'babel-eslint',
 	'parserOptions': {
 		'ecmaFeatures': {
 			'jsx': true
@@ -30,6 +31,9 @@ module.exports = {
 			'error',
 			'tab'
 		],
+		'react/jsx-pascal-case': 0,
+		'react/destructuring-assignment': 0,
+		'no-underscore-dangle': 0,
 		'indent': [
 			'error',
 			'tab'

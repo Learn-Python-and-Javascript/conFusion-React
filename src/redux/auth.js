@@ -1,6 +1,6 @@
 import * as ActionTypes from './ActionTypes'
 
-export const Auth = (state = {
+const Auth = (state = {
 	isLoading: false,
 	isAuthenticated: !!localStorage.getItem('token'),
 	token: localStorage.getItem('token'),
@@ -70,3 +70,5 @@ export const Auth = (state = {
 		return state
 	}
 }
+
+export default Auth

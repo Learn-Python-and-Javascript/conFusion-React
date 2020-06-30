@@ -1,11 +1,11 @@
 import * as ActionTypes from './ActionTypes'
 
-export const Leaders = (
+const Leaders = (
 	state = {
 		isLoading: true,
 		errMess: null,
 		leaders: [],
-	}, action
+	}, action,
 ) => {
 	switch (action.type) {
 	case ActionTypes.ADD_LEADERS:
@@ -25,3 +25,5 @@ export const Leaders = (
 		return state
 	}
 }
+
+export default Leaders
