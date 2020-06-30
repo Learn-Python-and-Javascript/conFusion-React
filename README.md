@@ -13,7 +13,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 最新项目由阿里云 ECS 迁移到 [heroku](https://www.heroku.com/) 平台
 
-### 自动化脚本部署简化了部署过程：
+### 部署流程简化
+
+1. 自动化脚本部署：
 
 ```json
 {
@@ -25,6 +27,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
     }
 }
 ```
+
+2. github 同步部署
+
+![github 同步部署](https://imgur.com/dZoqnI3)
 
 ### 同样需要配置路由
 单页面应用（single page application) 路由是虚拟的，阿里云服务器上可以用 Nginx 配置，使用 Heroku 平台时需要在 `app.js` 中加入
