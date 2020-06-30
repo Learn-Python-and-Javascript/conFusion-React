@@ -84,31 +84,31 @@ class Main extends Component {
 		const DishWithId = ({ match }) => (
 			// this.props.auth.isAuthenticated
 			// 	?
-					<DishDetail
-						dish={this.props.dishes.dishes.filter((dish) => dish._id === match.params.dishId)[0]}
-						isLoading={this.props.dishes.isLoading}
-						errMess={this.props.dishes.errMess}
-						comments={this.props.comments.comments.filter((comment) => comment._id)}
-						commentsErrMess={this.props.comments.errMess}
-						postComment={this.props.postComment}
-						// favorite={this.props.favorites.favorites.dishes.filter(
-						// 	(dish) => dish._id === match.params.dishId)
-						// }
-						// favorite={false}
-						// postFavorite={this.props.postFavorites}
-					/>
+			<DishDetail
+				dish={this.props.dishes.dishes.filter((dish) => dish._id === match.params.dishId)[0]}
+				isLoading={this.props.dishes.isLoading}
+				errMess={this.props.dishes.errMess}
+				comments={this.props.comments.comments.filter((comment) => comment._id)}
+				commentsErrMess={this.props.comments.errMess}
+				postComment={this.props.postComment}
+				// favorite={this.props.favorites.favorites.dishes.filter(
+				// 	(dish) => dish._id === match.params.dishId)
+				// }
+				// favorite={false}
+				// postFavorite={this.props.postFavorites}
+			/>
 
-				// :
-				// 	<DishDetail
-				// 		dish={this.props.dishes.dishes.filter((dish) => dish._id === match.params.dishId)[0]}
-				// 		isLoading={this.props.dishes.isLoading}
-				// 		errMess={this.props.dishes.errMess}
-				// 		comments={this.props.comments.comments.filter((comment) => comment._id)}
-				// 		commentsErrMess={this.props.comments.errMess}
-				// 		postComment={this.props.postComment}
-				// 		// favorite={false}
-				// 		// postFavorite={this.props.postFavorites}
-				// 	/>
+			// :
+			// 	<DishDetail
+			// 		dish={this.props.dishes.dishes.filter((dish) => dish._id === match.params.dishId)[0]}
+			// 		isLoading={this.props.dishes.isLoading}
+			// 		errMess={this.props.dishes.errMess}
+			// 		comments={this.props.comments.comments.filter((comment) => comment._id)}
+			// 		commentsErrMess={this.props.comments.errMess}
+			// 		postComment={this.props.postComment}
+			// 		// favorite={false}
+			// 		// postFavorite={this.props.postFavorites}
+			// 	/>
 
 		)
 
@@ -152,16 +152,16 @@ class Main extends Component {
 								)}
 							/>
 							<Route path="/menu/:dishId" component={DishWithId} />
-							{/*<PrivateRoute*/}
-							{/*	exact*/}
-							{/*	path="/favorites"*/}
-							{/*	component={() => (*/}
-							{/*		<Favorites*/}
-							{/*			favorites={this.props.favorites}*/}
-							{/*			deleteFavorite={this.props.deleteFavorites}*/}
-							{/*		/>*/}
-							{/*	)}*/}
-							{/*/>*/}
+							{/* <PrivateRoute */}
+							{/*	exact */}
+							{/*	path="/favorites" */}
+							{/*	component={() => ( */}
+							{/*		<Favorites */}
+							{/*			favorites={this.props.favorites} */}
+							{/*			deleteFavorite={this.props.deleteFavorites} */}
+							{/*		/> */}
+							{/*	)} */}
+							{/* /> */}
 							<Route
 								exact
 								path="/contactus"
