@@ -32,7 +32,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ![github 同步部署](https://i.imgur.com/dZoqnI3.jpg)
 
-### 同样需要配置路由
+### 配置路由
 单页面应用（single page application) 路由是虚拟的，阿里云服务器上可以用 Nginx 配置，使用 Heroku 平台时需要在 `app.js` 中加入
 以下代码：
 
