@@ -93,10 +93,10 @@ const Contact = (props) => {
 							<i className="fa fa-phone" />
 							Call
 						</a>
-						<a role="button" className="btn btn-info">
+						<Button role="button" className="btn btn-info">
 							<i className="fa fa-skype" />
 							Skype
-						</a>
+						</Button>
 						<a role="button" className="btn btn-success" href="mailto:confusion@food.net">
 							<i className="fa fa-envelope-o" />
 							Email

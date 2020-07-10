@@ -12,7 +12,7 @@ import Footer from './Footer'
 import Home from './Home'
 import Contact from './Contact'
 import About from './About'
-import Favorites from './Favorite'
+// import Favorites from './Favorite'
 import {
 	postComment,
 	fetchDishes,
@@ -21,7 +21,7 @@ import {
 	fetchLeaders,
 	postFeedback,
 	loginUser, logoutUser, signupUser,
-	fetchFavorites, postFavorite, deleteFavorite,
+	// fetchFavorites, postFavorite, deleteFavorite,
 } from '../redux/ActionCreators'
 
 const mapStateToProps = (state) => ({

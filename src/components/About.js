@@ -4,6 +4,7 @@ import {
 } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import { Fade, Stagger } from 'react-animation-components'
+import LazyLoad from 'react-lazy-load'
 import baseUrl from '../shared/baseUrl'
 import Loading from './Loading'
 
@@ -11,7 +12,9 @@ function RenderLeader({ leader }) {
 	return (
 		<Media tag="li">
 			<Media left middle>
-				<Media object src={baseUrl + leader.image} alt={leader.name} />
+				<LazyLoad>
+					<Media object src={baseUrl + leader.image} alt={leader.name} />
+				</LazyLoad>
 			</Media>
 			<Media body className="ml-5">
 				<Media heading>

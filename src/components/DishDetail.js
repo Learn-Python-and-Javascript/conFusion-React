@@ -6,6 +6,7 @@ import {
 import { Control, LocalForm } from 'react-redux-form'
 import { Link } from 'react-router-dom'
 import { FadeTransform, Fade, Stagger } from 'react-animation-components'
+import LazyLoad from 'react-lazy-load'
 import Loading from './Loading'
 import baseUrl from '../shared/baseUrl'
 
@@ -15,7 +16,9 @@ function RenderDish({ dish }) {
 			<div className="col-12 col-md-5 m-1">
 				<FadeTransform in transformProps={{ exitTransform: 'scale(0.5) translate&(-50%)' }}>
 					<Card>
-						<CardImg top src={baseUrl + dish.image} alt={dish.name} />
+						<LazyLoad>
+							<CardImg top src={baseUrl + dish.image} alt={dish.name} />
+						</LazyLoad>
 						<CardBody>
 							<CardTitle>
 								{dish.name}

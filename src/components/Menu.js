@@ -3,6 +3,7 @@ import {
 	Card, CardImg, CardImgOverlay, CardTitle, Breadcrumb, BreadcrumbItem,
 } from 'reactstrap'
 import { Link } from 'react-router-dom'
+import LazyLoad from 'react-lazy-load'
 import Loading from './Loading'
 import baseUrl from '../shared/baseUrl'
 
@@ -10,7 +11,9 @@ function RenderMenuItem({ dish }) {
 	return (
 		<Card>
 			<Link to={`/menu/${dish._id}`}>
-				<CardImg width="100%" src={baseUrl + dish.image} alt={dish.name} />
+				<LazyLoad>
+					<CardImg width="100%" src={baseUrl + dish.image} alt={dish.name} />
+				</LazyLoad>
 				<CardImgOverlay>
 					<CardTitle>
 						{dish.name}
