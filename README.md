@@ -9,6 +9,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - JS 库：React (hooks)
 - 服务端开发：Node + Express + MongoDB
 
+![Three Tier Architecture](https://i.imgur.com/26TB4WY.png)
+
 ## lint
 
 采用了 [Airbnb 的 ESLint 配置](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb),
