@@ -3,6 +3,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 > Coursera [course](https://www.coursera.org/learn/front-end-react/home/welcome) 
 >public repo: https://github.com/jmuppala/conFusion-React
 
+## Development
+
+- UI 框架: Bootstrap
+- JS 库：React (hooks)
+- 服务端开发：Node + Express + MongoDB
+
 ## lint
 
 采用了 [Airbnb 的 ESLint 配置](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb),
