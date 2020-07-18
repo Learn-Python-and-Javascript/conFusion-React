@@ -52,7 +52,7 @@ app.get('*', (req, res) => {
 })
 ```
 
-### Optimization
+## Optimization
 
 - lazy load
     - [react-lazy-load](https://github.com/loktar00/react-lazy-load)
