@@ -11,13 +11,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ![Three Tier Architecture](https://i.imgur.com/26TB4WY.png)
 
-## lint
+## Code Lint
 
 采用了 [Airbnb 的 ESLint 配置](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb),
 前端 `eslint-config-airbnb`，后端为 `eslint-config-airbnb-base`，lint 过程中分而治之，将暂不需要的文件目录添加到 `.eslintignore` 
 中，并将 lint 命令写入脚本：`"lint": "eslint ."`，提高的 lint 效率
 
-## Heroku
+## Cloud Provider
 
 最新项目由阿里云 ECS 迁移到 [Heroku](https://www.heroku.com/) 平台
 
@@ -51,3 +51,11 @@ app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'build', 'index.html'))
 })
 ```
+
+### Optimization
+
+- lazy load
+    - [react-lazy-load](https://github.com/loktar00/react-lazy-load)
+
+- compression
+    - [compression](https://github.com/expressjs/compression)
