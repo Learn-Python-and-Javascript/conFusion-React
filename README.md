@@ -9,7 +9,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - JS 库：React (hooks)
 - 服务端开发：Node + Express + MongoDB
 
-![Three Tier Architecture](https://i.imgur.com/26TB4WY.png)
+![Three Tier Architecture](https://i.imgur.com/BoSbHOA.png)
 
 ## Code Lint
 
