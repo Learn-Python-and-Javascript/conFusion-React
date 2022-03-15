@@ -28,6 +28,7 @@ jobs:
         echo '[user]' >> .git/config
         echo '  name="Yadong Zhang"' >> .git/config
         echo '  email="zhyd007@gmail.com"' >> .git/config
-        cat .git/config
-        npm version minor
+        cat .git/confignpm --no-git-tag-version version minor
+        git add package.json package-lock.json
+        git commit -m "bump minor version"
         git push -u origin main-action
