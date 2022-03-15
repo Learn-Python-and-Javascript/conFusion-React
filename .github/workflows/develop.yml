@@ -1,12 +1,12 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: Node.js CI (develop)
+name: Node.js CI (develop-action)
 
 on:
   pull_request: 
     types: [ closed ]
-    branches: [ develop ]
+    branches: [ develop-action ]
 
 
 jobs:
@@ -31,4 +31,4 @@ jobs:
         npm --no-git-tag-version version patch
         git add package.json package-lock.json
         git commit -m "bump patch version"
-        git push -u origin develop
+        git push -u origin develop-action

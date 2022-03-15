@@ -1,12 +1,12 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: Node.js CI (main)
+name: Node.js CI (main-action)
 
 on:
   pull_request:
     types: [ closed ]
-    branches: [ main ]
+    branches: [ main-action ]
 
 jobs:
   build:
@@ -28,4 +28,4 @@ jobs:
         echo '  email="zhyd007@gmail.com"' >> .git/config
         cat .git/config
         npm version minor
-        git push -u origin main
+        git push -u origin main-action
